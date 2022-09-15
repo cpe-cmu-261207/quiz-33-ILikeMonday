@@ -31,16 +31,20 @@ export default function Comment(props) {
             </span>
             <br />
             <span style={{ color: "#E4E6EB" }}>{x.commentText}</span>
-            <div className="d-flex align-items-center gap-1">
-              <img src="/like.svg" width={20}></img>
-              <span style={{ color: "#B0B3B8" }}>{x.likeNum}</span>
-            </div>
+            {x.likeNum > 0 ? (
+              <div className="d-flex align-items-center gap-1">
+                <img src="/like.svg" width={20}></img>
+                <span style={{ color: "#B0B3B8" }}>{x.likeNum}</span>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
+          <Reply reply={x.replies} />
         </div>
       ))}
 
       {/*render Reply here... */}
-      <Reply />
     </div>
   );
 }
